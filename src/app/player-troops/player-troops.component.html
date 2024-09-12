@@ -1,1 +1,17 @@
-<h2>{{ name }}</h2>
+<section id="troops">
+  <header>
+    <h2>{{ name }}'s Troops</h2>
+    <menu>
+      <button>Add Troops</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (owned of selectedPlayerOwnedTroops; track owned.id) {
+      <li>
+        <app-owned />
+      </li>
+    }
+  </ul>
+</section>
+
