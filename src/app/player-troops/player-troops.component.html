@@ -1,15 +1,19 @@
+@if (isAddingTroops) {
+  <app-new-troop (cancel)="onCancelAddTroops()"/>
+}
+
 <section id="troops">
   <header>
     <h2>{{ name }}'s Troops</h2>
     <menu>
-      <button>Add Troops</button>
+      <button (click)="onStartAddTroops()">Add Troops</button>
     </menu>
   </header>
 
   <ul>
     @for (owned of selectedPlayerOwnedTroops; track owned.id) {
       <li>
-        <app-owned />
+        <app-owned [troop]="owned" (removeTroop)="onRemoveTroop($event)" />
       </li>
     }
   </ul>

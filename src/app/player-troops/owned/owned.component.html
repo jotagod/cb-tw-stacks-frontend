@@ -1,8 +1,8 @@
 <article>
-  <h2>TROOP TITLE</h2>
-  <time>TIME</time>
-  <p>SUMMARY</p>
+  <h2>{{ troop.title }}</h2>
+  <time>{{troop.dueDate}}</time>
+  <p>{{troop.summary}}</p>
   <P class="actions">
-    <button>Complete</button>
+    <button (click)="onRemoveTroop()">Remove Troop</button>
   </P>
 </article>

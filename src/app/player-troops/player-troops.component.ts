@@ -1,16 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { OwnedComponent } from './owned/owned.component';
+import { NewTroopComponent } from "./new-troop/new-troop.component";
 
 @Component({
   selector: 'app-player-troops',
   standalone: true,
-  imports: [OwnedComponent],
+  imports: [OwnedComponent, NewTroopComponent],
   templateUrl: './player-troops.component.html',
   styleUrl: './player-troops.component.css',
 })
 export class PlayerTroopsComponent {
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name!: string;
+  isAddingTroops = false;
   ownedTroops = [
     {
       id: 't1',
@@ -40,5 +42,17 @@ export class PlayerTroopsComponent {
 
   get selectedPlayerOwnedTroops() {
     return this.ownedTroops.filter((owned) => owned.userId === this.userId);
+  }
+
+  onRemoveTroop(id: string) {
+    this.ownedTroops = this.ownedTroops.filter((owned) => owned.id !== id);
+  }
+
+  onStartAddTroops() {
+    this.isAddingTroops = true;
+  }
+
+  onCancelAddTroops() {
+    this.isAddingTroops = false;
   }
 }
